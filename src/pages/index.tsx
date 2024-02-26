@@ -135,7 +135,7 @@ export default function Home() {
                   className="mt-px font-light text-gray-200 cursor-pointer select-none"
                   htmlFor="html"
                 >
-                  HTML
+                  HTML 2
                 </label>
               </div>
               <div className="inline-flex items-center">
