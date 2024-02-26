@@ -3,12 +3,16 @@ import { Button } from "./components/Button";
 
 import { Inter } from "next/font/google";
 import { Fira_Code } from "next/font/google";
+import { Noto_Sans_Lao } from "next/font/google";
 import Link from "next/link";
 
 import React from "react";
 import RadioButton from "./components/radioButton";
+import Modal from "./components/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
+const firaCode = Fira_Code({ subsets: ["latin"] });
+const noto = Noto_Sans_Lao({ subsets: ["latin"] });
 
 export default function Home() {
   const brands: Option[] = [
@@ -19,7 +23,7 @@ export default function Home() {
 
   return (
     <main
-      className={`flex justify-center items-center min-h-screen min-w-screen bg-slate-950 ${inter.className}`}
+      className={`flex justify-center items-center min-h-screen min-w-screen bg-slate-950 ${noto.className}`}
     >
       {/* CONTAINER FORM */}
       <section className="rounded-xl max-w-screen-sm p-5 bg-slate-900">
@@ -41,13 +45,13 @@ export default function Home() {
             </h2>
           </div>
         </div>
-        <div className="flex flex-col items-center text-center sm:mx-auto sm:w-full sm:max-w-sm">
+        {/* TEXTO DO PESO */}
+        <div className="flex flex-col items- text-left sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" action="#" method="POST">
             <div>
-              {/* TEXTO DO PESO */}
               <label
                 htmlFor="input-6"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-100"
+                className="block text-lg font-medium text-gray-700 dark:text-gray-100"
               >
                 Peso
               </label>
@@ -77,7 +81,7 @@ export default function Home() {
               {/* TEXTO DA GORDURA */}
               <label
                 htmlFor="input-6"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-100"
+                className="block text-lg font-medium text-gray-700 dark:text-gray-100"
               >
                 Porcentagem de gordura corporal
               </label>
@@ -121,9 +125,11 @@ export default function Home() {
             </div>
           </form>
         </div>
-        <div>{/* texto resultado */}</div>
       </section>
-      <div>{/* modal de alerta de texto (exibir ao entrar na pagina) */}</div>
+      <div>
+        {/* modal de alerta de texto (exibir ao entrar na pagina) */}
+        <Modal></Modal>
+      </div>
       <div>
         {/* modal de texto para o resultado (exibir ao clicar em calcular)*/}
       </div>

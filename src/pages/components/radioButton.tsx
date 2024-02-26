@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 
 export default function RadioButton({ value, label }: Option) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleLabelClick = () => {
+    if (inputRef.current) {
+      inputRef.current.click();
+    }
+  };
+
   return (
     <div className="inline-flex items-center">
       <label
@@ -26,8 +34,9 @@ export default function RadioButton({ value, label }: Option) {
         </span>
       </label>
       <label
-        className="mt-px font-light text-gray-200 cursor-pointer select-none"
+        className="mt-px text-gray-200 cursor-pointer select-none"
         htmlFor={label}
+        onClick={handleLabelClick}
       >
         {label}
       </label>
