@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-export default function RadioButton({ value, label }: Option) {
+export default function RadioButton({ value, label }: OptionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleLabelClick = () => {

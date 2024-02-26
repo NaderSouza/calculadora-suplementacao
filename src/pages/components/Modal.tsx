@@ -1,7 +1,18 @@
-import React from "react";
+import { useState } from "react";
+import { Button } from "./Button";
 
-export default function Modal() {
-  const [showModal, setShowModal] = React.useState(true);
+export default function Modal({
+  title,
+  children,
+  buttonText,
+  icon,
+}: ModalProps) {
+  const [showModal, setShowModal] = useState(true);
+  const playSound = () => {
+    const audio = new Audio("/bur.mp3");
+    audio.play();
+  };
+
   return (
     <>
       {showModal ? (
@@ -13,49 +24,42 @@ export default function Modal() {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-500 rounded-t">
                   <h3 className="text-3xl font-semibold">
-                    É HORA DO SHOW PO*%@!!
+                    {icon}
+                    {title}
                   </h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
-                      ×
-                    </span>
-                  </button>
+                    className="p-1 ml-auto bg-transparent border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    onClick={() => {
+                      playSound();
+                      setShowModal(false);
+                    }}
+                  ></button>
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolores molestiae minima, reiciendis vero quae quod
-                    recusandae voluptatibus placeat. Ab, ipsum quis! Suscipit
-                    fugit id facere ab illo eveniet quo cumque?
+                    {children}
                   </p>
                 </div>
-                {/*footer*/}
+                {}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-500 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
+                  <Button
+                    onClick={() => {
+                      playSound();
+                      setShowModal(false);
+                    }}
                   >
-                    Tchau Monstro!
-                  </button>
-                  <button
-                    className="bg-emerald-500 text-zinc-900 active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    OK Monstro!
-                  </button>
+                    {buttonText}
+                  </Button>
                 </div>
               </div>
             </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : null}
+      ) : (
+        <></>
+      )}
     </>
   );
 }

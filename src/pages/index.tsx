@@ -1,35 +1,35 @@
+import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { Button } from "./components/Button";
-
-import { Inter } from "next/font/google";
-import { Fira_Code } from "next/font/google";
 import { Noto_Sans_Lao } from "next/font/google";
-import Link from "next/link";
 
-import React from "react";
 import RadioButton from "./components/radioButton";
 import Modal from "./components/Modal";
+import { AlertTriangleIcon } from "lucide-react";
 
-const inter = Inter({ subsets: ["latin"] });
-const firaCode = Fira_Code({ subsets: ["latin"] });
 const noto = Noto_Sans_Lao({ subsets: ["latin"] });
 
 export default function Home() {
-  const brands: Option[] = [
+  const { register, handleSubmit } = useForm();
+
+  const brands: OptionProps[] = [
     { value: "growth", label: "Growth" },
     { value: "maxtitanium", label: "Max Titanium" },
     { value: "integralMedica", label: "Integral Médica" },
   ];
 
+  const calcSupplements = ({ weight, bodyFatPercentage }: BodyData | any) => {
+    return alert(weight + bodyFatPercentage);
+  };
+
+  const warning = <AlertTriangleIcon className="text-yellow-400"/>;
+
   return (
     <main
       className={`flex justify-center items-center min-h-screen min-w-screen bg-slate-950 ${noto.className}`}
     >
-      {/* CONTAINER FORM */}
       <section className="rounded-xl max-w-screen-sm p-5 bg-slate-900">
-        {/* CONTAINER IMG */}
         <div className=" ">
-          {/* IMG FORM */}
           <div className="flex flex-col items-center text-center  sm:mx-auto sm:w-full sm:max-w-sm">
             <Image
               width={100}
@@ -38,8 +38,6 @@ export default function Home() {
               alt=""
               className="max-w-[100px]"
             />
-
-            {/* TEXTO DA CALCULADORA */}
             <h2 className="mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-white">
               Calculadora de suplementação
             </h2>
@@ -47,7 +45,11 @@ export default function Home() {
         </div>
         {/* TEXTO DO PESO */}
         <div className="flex flex-col items- text-left sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form
+            className="space-y-6"
+            onSubmit={handleSubmit(calcSupplements)}
+            id="formSupplements"
+          >
             <div>
               <label
                 htmlFor="input-6"
@@ -63,6 +65,7 @@ export default function Home() {
                   id="input-6"
                   className="block w-full h-10 pl-8 pr-3 mt-1 text-sm text-gray-700 border focus:outline-none rounded shadow-sm focus:border-blue-500"
                   placeholder="Digite seu peso"
+                  {...register("weight")}
                 />
 
                 {/* ICON DO INPUT */}
@@ -92,6 +95,7 @@ export default function Home() {
                   id="input-6"
                   className="block w-full h-10 pl-8 pr-3 mt-1 text-sm text-gray-700 border focus:outline-none rounded shadow-sm focus:border-blue-500"
                   placeholder="Digite sua % de gordura"
+                  {...register("bodyFatPercentage")}
                 />
 
                 {/* ICON DA GORDURA */}
@@ -110,6 +114,7 @@ export default function Home() {
             <div className="flex gap-10">
               {brands.map((brand) => (
                 <RadioButton
+                  key={brand.value}
                   value={brand.value}
                   label={brand.label}
                 ></RadioButton>
@@ -121,14 +126,22 @@ export default function Home() {
 
             {/* BTN DE CALCULAR */}
             <div className="flex h-full justify-center items-center rounded-md px-4 py-1.5">
-              <Button success>Calcular</Button>
+              <Button type="submit" success>
+                Calcular
+              </Button>
             </div>
           </form>
         </div>
       </section>
       <div>
         {/* modal de alerta de texto (exibir ao entrar na pagina) */}
-        <Modal></Modal>
+        <Modal
+          icon={warning}
+          title="É HORA DO SHOW PO*%@!!"
+          buttonText="Entendi"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </Modal>
       </div>
       <div>
         {/* modal de texto para o resultado (exibir ao clicar em calcular)*/}
