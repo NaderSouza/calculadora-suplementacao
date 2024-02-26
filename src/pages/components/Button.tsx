@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import { Calculator, CheckCircle, CheckCircle2 } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 export type ButtonProps = ComponentProps<"button"> & {
   success?: boolean;
