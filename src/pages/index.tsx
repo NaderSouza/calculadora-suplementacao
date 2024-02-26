@@ -1,8 +1,12 @@
 import Image from "next/image";
+import { Button } from "./components/Button";
+import { Radio } from "@material-tailwind/react";
+
 import { Inter } from "next/font/google";
 import { Fira_Code } from "next/font/google";
-import { Select, Option } from "@material-tailwind/react";
 import Link from "next/link";
+
+import { Select, Option } from "@material-tailwind/react";
 import { TESelect } from "tw-elements-react";
 
 import React from "react";
@@ -20,13 +24,14 @@ export default function Home() {
     //  TELA TODA
 
     <main
-      className={`min-h-screen min-w-screen w-screen h-screen bg-slate-950 ${inter.className}`}
+      className={`flex justify-center items-center min-h-screen min-w-screen bg-slate-950 ${inter.className}`}
     >
-      {/* CONTAINER DO FORM */}
-      <section className="max-w-screen-xl  m-auto pt-20 bg-slate-950">
-        <div className="">
+      {/* CONTAINER FORM */}
+      <section className="rounded-xl max-w-screen-sm p-5 bg-slate-900">
+        {/* CONTAINER IMG */}
+        <div className=" ">
           {/* IMG FORM */}
-          <div className="flex flex-col items-center text-center sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="flex flex-col items-center text-center  sm:mx-auto sm:w-full sm:max-w-sm">
             <Image
               width={100}
               height={100}
@@ -70,22 +75,6 @@ export default function Home() {
                     alt=""
                     className="w-4 h-4 text-blue-400 pointer-events-none"
                   />
-
-                  {/* Ainda testar esse SVG ---
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="w-4 h-4 text-blue-400 pointer-events-none"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    ></path>
-                  </svg> */}
                 </span>
               </div>
             </div>
@@ -118,19 +107,75 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            {/* BTN DROPDOWN */}
+            {/* RADIO BUTTON */}
+            <div className="flex gap-10">
+              <div className="inline-flex items-center">
+                <label
+                  className="relative flex items-center p-3 rounded-full cursor-pointer"
+                  htmlFor="html"
+                >
+                  <input
+                    name="type"
+                    type="radio"
+                    className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-400 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-400 checked:before:bg-gray-400 hover:before:opacity-10"
+                    id="html"
+                  />
+                  <span className="absolute text-gray-500 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                    >
+                      <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+                    </svg>
+                  </span>
+                </label>
+                <label
+                  className="mt-px font-light text-gray-200 cursor-pointer select-none"
+                  htmlFor="html"
+                >
+                  HTML
+                </label>
+              </div>
+              <div className="inline-flex items-center">
+                <label
+                  className="relative flex items-center p-3 rounded-full cursor-pointer"
+                  htmlFor="react"
+                >
+                  <input
+                    name="type"
+                    type="radio"
+                    className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-400 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-400 checked:before:bg-gray-400 hover:before:opacity-10"
+                    id="react"
+                    checked
+                  />
+                  <span className="absolute text-gray-500 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3.5 w-3.5"
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                    >
+                      <circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+                    </svg>
+                  </span>
+                </label>
+                <label
+                  className="mt-px font-light text-gray-200 cursor-pointer select-none"
+                  htmlFor="react"
+                >
+                  React
+                </label>
+              </div>
+            </div>
+            {/* FINAL DO RADIO */}
 
-            {/* FINAL DO DROPDOWN */}
+            <div className="flex h-full justify-center items-center rounded-md px-4 py-1.5"></div>
 
             {/* BTN DE CALCULAR */}
-            <div>
-              <Link rel="stylesheet" href="/src/pages/teste.tsx" />
-              <button
-                type="submit"
-                className="flex w-full justify-center rounded-md bg-fuchsia-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Calcular
-              </button>
+            <div className="flex h-full justify-center items-center rounded-md px-4 py-1.5">
+              <Button success>Calcular</Button>
             </div>
           </form>
         </div>
