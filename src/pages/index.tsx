@@ -22,7 +22,9 @@ export default function Home() {
     return alert(weight + bodyFatPercentage);
   };
 
-  const warning = <AlertTriangleIcon className="text-yellow-400"/>;
+  const warning = (
+    <AlertTriangleIcon className="text-yellow-400 size-12 pb-2 m-auto" />
+  );
 
   return (
     <main
@@ -111,7 +113,7 @@ export default function Home() {
               </div>
             </div>
             {/* RADIO BUTTON */}
-            <div className="flex gap-10">
+            <div className="flex gap-6">
               {brands.map((brand) => (
                 <RadioButton
                   key={brand.value}
@@ -135,12 +137,8 @@ export default function Home() {
       </section>
       <div>
         {/* modal de alerta de texto (exibir ao entrar na pagina) */}
-        <Modal
-          icon={warning}
-          title="É HORA DO SHOW PO*%@!!"
-          buttonText="Entendi"
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <Modal icon={warning} title="Termos de uso" buttonText="OK">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, !.
         </Modal>
       </div>
       <div>

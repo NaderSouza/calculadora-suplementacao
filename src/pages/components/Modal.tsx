@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "./Button";
+import { Button, ButtonModal } from "./Button";
 
 export default function Modal({
   title,
@@ -22,8 +22,8 @@ export default function Modal({
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-slate-800 outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-500 rounded-t">
-                  <h3 className="text-3xl font-semibold">
+                <div className=" items-start justify-between p-3 border-b border-solid border-slate-500 rounded-t">
+                  <h3 className="text-3xl font-semibold text-center">
                     {icon}
                     {title}
                   </h3>
@@ -43,14 +43,14 @@ export default function Modal({
                 </div>
                 {}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-500 rounded-b">
-                  <Button
+                  <ButtonModal
                     onClick={() => {
                       playSound();
                       setShowModal(false);
                     }}
                   >
                     {buttonText}
-                  </Button>
+                  </ButtonModal>
                 </div>
               </div>
             </div>

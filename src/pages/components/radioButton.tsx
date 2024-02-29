@@ -10,7 +10,7 @@ export default function RadioButton({ value, label }: OptionProps) {
   };
 
   return (
-    <div className="inline-flex items-center">
+    <div className="inline-flex items-center mt-3">
       <label
         className="relative flex items-center p-3 rounded-full cursor-pointer"
         htmlFor="html"
