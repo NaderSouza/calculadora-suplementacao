@@ -8,6 +8,7 @@ type ModalProps = {
     children: any;
     buttonText: string;
     icon: any;
+    onClose?: () => void;
 }
 
 type BodyData = {

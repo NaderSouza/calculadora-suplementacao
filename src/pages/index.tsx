@@ -5,7 +5,9 @@ import { Noto_Sans_Lao } from "next/font/google";
 
 import RadioButton from "./components/radioButton";
 import Modal from "./components/Modal";
-import { AlertTriangleIcon } from "lucide-react";
+import { AlertTriangleIcon, CheckCircle } from "lucide-react";
+import { ModalCalc } from "./components/ModalCalc";
+import { useState } from "react";
 
 const noto = Noto_Sans_Lao({ subsets: ["latin"] });
 
@@ -19,18 +21,26 @@ export default function Home() {
   ];
 
   const calcSupplements = ({ weight, bodyFatPercentage }: BodyData | any) => {
-    return alert(weight + bodyFatPercentage);
+    // return alert(weight + bodyFatPercentage);
+    return weight + bodyFatPercentage;
   };
 
   const warning = (
-    <AlertTriangleIcon className="text-yellow-400 size-12 pb-2 m-auto" />
+    <CheckCircle className="text-yellow-400 size-12 pb-2 m-auto" />
   );
+  const calc = <CheckCircle className="text-emerald-500 size-12 pb-2 m-auto" />;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   return (
     <main
-      className={`flex justify-center items-center min-h-screen min-w-screen bg-slate-950 ${noto.className}`}
+      className={`flex justify-center items-center min-h-screen bg-slate-950 ${noto.className}`}
     >
-      <section className="rounded-xl max-w-screen-sm p-5 bg-slate-900">
+      <section className="rounded-xl min-w-screen-2xl p-5 bg-slate-900">
         <div className=" ">
           <div className="flex flex-col items-center text-center  sm:mx-auto sm:w-full sm:max-w-sm">
             <Image
@@ -113,10 +123,10 @@ export default function Home() {
               </div>
             </div>
             {/* RADIO BUTTON */}
-            <div className="flex gap-6">
-              {brands.map((brand) => (
+            <div className="flex gap-5 flex-wrap max-w-screen">
+              {brands.map((brand, index) => (
                 <RadioButton
-                  key={brand.value}
+                  key={index}
                   value={brand.value}
                   label={brand.label}
                 ></RadioButton>
@@ -124,11 +134,9 @@ export default function Home() {
             </div>
             {/* FINAL DO RADIO */}
 
-            <div className="flex h-full justify-center items-center rounded-md px-4 py-1.5"></div>
-
             {/* BTN DE CALCULAR */}
             <div className="flex h-full justify-center items-center rounded-md px-4 py-1.5">
-              <Button type="submit" success>
+              <Button type="submit" success onClick={() => setIsOpen(true)}>
                 Calcular
               </Button>
             </div>
@@ -143,6 +151,16 @@ export default function Home() {
       </div>
       <div>
         {/* modal de texto para o resultado (exibir ao clicar em calcular)*/}
+        {isOpen && (
+          <ModalCalc
+            icon={calc}
+            title="Resultado"
+            buttonText="OK"
+            onClose={closeModal}
+          >
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic,
+          </ModalCalc>
+        )}
       </div>
     </main>
   );
