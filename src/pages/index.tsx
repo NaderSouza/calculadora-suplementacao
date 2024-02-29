@@ -5,7 +5,7 @@ import { Noto_Sans_Lao } from "next/font/google";
 
 import RadioButton from "./components/radioButton";
 import Modal from "./components/Modal";
-import { AlertTriangleIcon, CheckCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle } from "lucide-react";
 import { ModalCalc } from "./components/ModalCalc";
 import { useState } from "react";
 
@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   const warning = (
-    <CheckCircle className="text-yellow-400 size-12 pb-2 m-auto" />
+    <AlertTriangle className="text-yellow-400 size-12 pb-2 m-auto" />
   );
   const calc = <CheckCircle className="text-emerald-500 size-12 pb-2 m-auto" />;
 
@@ -149,6 +149,7 @@ export default function Home() {
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, !.
         </Modal>
       </div>
+
       <div>
         {/* modal de texto para o resultado (exibir ao clicar em calcular)*/}
         {isOpen && (
