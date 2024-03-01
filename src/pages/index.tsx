@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-import { Button } from "./components/Button";
+import Button from "./components/Button";
 import { Noto_Sans_Lao } from "next/font/google";
 
 import RadioButton from "./components/radioButton";
 import Modal from "./components/Modal";
 import { AlertTriangle, CheckCircle } from "lucide-react";
-import { ModalCalc } from "./components/ModalCalc";
+import ModalCalc from "./components/ModalCalc";
 import { useState } from "react";
 
 const noto = Noto_Sans_Lao({ subsets: ["latin"] });

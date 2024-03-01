@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, ButtonModal } from "./Button";
+import { ButtonModal } from "./Button";
 
 export default function Modal({
   title,

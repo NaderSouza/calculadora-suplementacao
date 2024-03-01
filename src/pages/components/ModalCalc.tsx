@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { Button, ButtonModal, ButtonModalCalc } from "./Button";
+import { ButtonModalCalc } from "./Button";
 
-export function ModalCalc({
+export default function ModalCalc({
   title,
   children,
   buttonText,
