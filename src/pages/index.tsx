@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <main
-      className={`flex justify-center items-center min-h-screen bg-slate-950 ${noto.className}`}
+      className={`flex justify-center items-center min-h-screen min-w-screen bg-slate-950 ${noto.className}`}
     >
       <section className="rounded-xl min-w-screen-2xl p-5 bg-slate-900">
         <div className=" ">
@@ -56,9 +56,9 @@ export default function Home() {
           </div>
         </div>
         {/* TEXTO DO PESO */}
-        <div className="flex flex-col items- text-left sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="flex flex-col items-center text-left sm:mx-auto sm:w-full">
           <form
-            className="space-y-6"
+            className="space-y-10"
             onSubmit={handleSubmit(calcSupplements)}
             id="formSupplements"
           >
@@ -123,7 +123,7 @@ export default function Home() {
               </div>
             </div>
             {/* RADIO BUTTON */}
-            <div className="flex gap-5 flex-wrap max-w-screen">
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-5">
               {brands.map((brand, index) => (
                 <RadioButton
                   key={index}
