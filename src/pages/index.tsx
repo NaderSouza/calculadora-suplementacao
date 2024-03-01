@@ -146,7 +146,7 @@ export default function Home() {
       <div>
         {/* modal de alerta de texto (exibir ao entrar na pagina) */}
         <Modal icon={warning} title="Termos de uso" buttonText="OK">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, !.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, !6.
         </Modal>
       </div>
 
