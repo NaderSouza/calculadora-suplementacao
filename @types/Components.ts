@@ -12,7 +12,7 @@ type ModalProps = {
 	onClose?: () => void;
 };
 
-type Brand = 'growth' | 'maxtitanium' | 'integralmedica';
+type Brand = 'growth' | 'maxTitanium' | 'integralMedica';
 
 type BodyData = {
 	weight: number;

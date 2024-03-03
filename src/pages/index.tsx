@@ -55,7 +55,7 @@ export default function Home() {
 
 	const brands: OptionProps[] = [
 		{ value: "growth", label: "Growth", register },
-		{ value: "maxtitanium", label: "Max Titanium", register },
+		{ value: "maxTitanium", label: "Max Titanium", register },
 		{ value: "integralMedica", label: "Integral Médica", register },
 	];
 

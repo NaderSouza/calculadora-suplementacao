@@ -51,7 +51,7 @@ const calcByBrand = {
 			betaAlanine: betaAlanineScoops,
 		};
 	},
-	maxtitanium: (
+	maxTitanium: (
 		proteinGram: number,
 		creatineSaturationGram: number,
 		creatineMaintenanceGram: number,
@@ -70,7 +70,7 @@ const calcByBrand = {
 			betaAlanine: betaAlanineScoops,
 		};
 	},
-	integralmedica: (
+	integralMedica: (
 		proteinGram: number,
 		creatineSaturationGram: number,
 		creatineMaintenanceGram: number,
@@ -120,11 +120,3 @@ export const calculateDosages = ({
 		scoops: scoopsByBrand,
 	};
 };
-
-const gorduraCorporal = 21;
-const peso = 82;
-calculateDosages({
-	weight: peso,
-	bodyFatPercentage: gorduraCorporal,
-	brand: "maxtitanium",
-});
