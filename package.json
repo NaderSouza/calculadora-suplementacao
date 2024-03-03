@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "openmobile": "node ./node_modules/openmobile/ip.js"
+    "openmobile": "node ./node_modules/openmobile/ip.js",
+    "lint": "npx @biomejs/biome format ./src --write",
+    "lint:check": "npx @biomejs/biome check ./src"
   },
   "dependencies": {
+    "@biomejs/biome": "^1.5.3",
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "flowbite-react": "^0.7.2",
