@@ -103,16 +103,12 @@ export const calculateDosages = ({
 
 	const betaAlanineDose = calcSuplements.betaAlanine(weight);
 
-	console.log(`\n`);
-
 	const scoopsByBrand = calcByBrand[brand](
 		proteinDose,
 		creatineSaturationDose,
 		creatineMaintenanceDose,
 		betaAlanineDose,
 	);
-
-	console.log(scoopsByBrand);
 
 	return {
 		dosages: {

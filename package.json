@@ -12,20 +12,14 @@
   },
   "dependencies": {
     "@biomejs/biome": "^1.5.3",
-    "@headlessui/react": "^1.7.18",
-    "@heroicons/react": "^2.1.1",
-    "flowbite-react": "^0.7.2",
     "lucide-react": "^0.340.0",
     "next": "14.1.0",
-    "next-google-fonts": "^2.2.0",
     "react": "^18",
-    "react-dom": "^18",
-    "react-hook-form": "^7.50.1"
+    "react-hook-form": "^7.51.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
-    "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
     "openmobile": "^1.0.6",
     "postcss": "^8",

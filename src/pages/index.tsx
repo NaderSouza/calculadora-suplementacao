@@ -1,13 +1,13 @@
+import { AlertTriangle, CheckCircle } from "lucide-react";
+import { Noto_Sans_Lao } from "next/font/google";
+import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AlertTriangle, CheckCircle } from "lucide-react";
-import Image from "next/image";
-import { Noto_Sans_Lao } from "next/font/google";
 
 import Button from "./components/Button";
-import RadioButton from "./components/RadioButton";
 import Modal from "./components/Modal";
 import ModalCalc from "./components/ModalCalc";
+import RadioButton from "./components/RadioButton";
 
 import { calculateDosages } from "../scripts/dosages";
 import Table from "./components/Table";
@@ -16,7 +16,7 @@ const noto = Noto_Sans_Lao({ subsets: ["latin"] });
 
 export default function Home() {
 	const { register, handleSubmit } = useForm<BodyData>();
-	const [contentModalCalc, setContentModalCalc] = useState(<></>);
+	const [contentModalCalc, setContentModalCalc] = useState(<div/>);
 
 	const submitCalculateDosages = (bodyData: BodyData) => {
 		const { dosages, scoops } = calculateDosages(bodyData);
@@ -49,7 +49,7 @@ export default function Home() {
 						"É recomendado o uso fracionado do suplemento durante o dia.",
 					],
 				]}
-			></Table>,
+				/>,
 		);
 	};
 
@@ -95,7 +95,7 @@ export default function Home() {
 					>
 						<div>
 							<label
-								htmlFor="input-6"
+								htmlFor="input-size"
 								className="block text-lg font-medium text-gray-700 dark:text-gray-100"
 							>
 								Peso
@@ -125,7 +125,7 @@ export default function Home() {
 						</div>
 						<div>
 							<label
-								htmlFor="input-bodyFatPercentage"
+								htmlFor="input-size"
 								className="block text-lg font-medium text-gray-700 dark:text-gray-100"
 							>
 								Porcentagem de gordura corporal
@@ -133,7 +133,7 @@ export default function Home() {
 							<div className="relative mt-1">
 								<input
 									type="number"
-									id="input-6"
+									id="input-bodyFatPercentage"
 									className="block w-full h-10 pl-8 pr-3 mt-1 text-sm text-gray-700 border focus:outline-none rounded shadow-sm focus:border-blue-500"
 									placeholder="Digite sua % de gordura"
 									{...register("bodyFatPercentage")}
@@ -154,13 +154,13 @@ export default function Home() {
 							</p>
 						</div>
 						<div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-5">
-							{brands.map((brand, index) => (
+							{brands.map((brand) => (
 								<RadioButton
-									key={index}
+									key={brand.value}
 									value={brand.value}
 									label={brand.label}
 									register={brand.register}
-								></RadioButton>
+								/>
 							))}
 						</div>
 						<div className="flex h-full justify-center items-center rounded-md px-4 py-1.5">
