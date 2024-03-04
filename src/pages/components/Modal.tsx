@@ -3,7 +3,7 @@ import { ButtonModal } from "./Button";
 import { ButtonModalCalc } from "./Button";
 import { icons } from "./Icons";
 
-export default function Modal({ title, children, buttonText }: ModalProps) {
+export default function Modal({ title, children, buttonText, icon }: ModalProps) {
   const [showModal, setShowModal] = useState(true);
 
   return (
@@ -17,7 +17,7 @@ export default function Modal({ title, children, buttonText }: ModalProps) {
                 {/*header*/}
                 <div className=" items-start justify-between p-3 border-b border-solid border-slate-500 rounded-t">
                   <h3 className="text-3xl font-semibold text-center">
-                    {icons["warning"]}
+                    {icons[icon]}
                     {title}
                   </h3>
                   <button
@@ -59,6 +59,7 @@ export function ModalCalc({
   title,
   children,
   buttonText,
+  icon,
   onClose,
 }: ModalProps) {
   return (
@@ -68,7 +69,7 @@ export function ModalCalc({
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-slate-800 outline-none focus:outline-none">
             <div className=" items-start justify-between p-3 border-b border-solid border-slate-500 rounded-t">
               <h3 className="text-3xl font-semibold text-center">
-                {icons["success"]}
+                {icons[icon]}
                 {title}
               </h3>
               <button

@@ -11,8 +11,6 @@ import RadioButton from "./components/RadioButton";
 
 import { calculateDosages } from "../scripts/dosages";
 import Table from "./components/Table";
-import { title } from "process";
-import { icons } from "./components/Icons";
 
 const noto = Noto_Sans_Lao({ subsets: ["latin"] });
 
@@ -174,7 +172,7 @@ export default function Home() {
           </form>
         </div>
       </section>
-      <Modal icon={null} title="AVISO!!!" buttonText="OK">
+      <Modal icon="warning" title="AVISO!!!" buttonText="OK">
         Este site fornece apenas uma orientação geral para o consumo de
         suplementos. Recomendamos que consulte um nutricionista para avaliar
         suas necessidades específicas e garantir uma dieta adequada às suas
@@ -184,8 +182,8 @@ export default function Home() {
       <div>
         {isOpen && (
           <ModalCalc
-            icon={calc}
-            title="Resultado"
+            icon="success"
+            title="Tabela de suplementação"
             buttonText="OK"
             onClose={closeModal}
           >

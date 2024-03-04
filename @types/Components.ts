@@ -8,7 +8,7 @@ type ModalProps = {
 	title: string;
 	children: any;
 	buttonText: string;
-	icon: any;
+	icon: 'warning' | 'success';
 	onClose?: () => void;
 };
 
