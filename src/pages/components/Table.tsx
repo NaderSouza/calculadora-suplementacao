@@ -13,7 +13,10 @@ export default function Table({ columns, rows }: Table) {
 				</thead>
 				<tbody>
 					{rows.map((row, key) => (
-						<tr key={row[key]} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+						<tr
+							key={row[key]}
+							className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+						>
 							{row.map((content, key) =>
 								key === 0 ? (
 									<th
@@ -24,7 +27,9 @@ export default function Table({ columns, rows }: Table) {
 										{content}
 									</th>
 								) : (
-									<td key={content} className="px-6 py-4">{content}</td>
+									<td key={content} className="px-6 py-4">
+										{content}
+									</td>
 								),
 							)}
 						</tr>

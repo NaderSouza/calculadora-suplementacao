@@ -30,7 +30,8 @@ export default function RadioButton({ value, label, register }: OptionProps) {
 						viewBox="0 0 16 16"
 						fill="currentColor"
 					>
-						<circle data-name="ellipse" cx="8" cy="8" r="8"></circle>
+						<title>brand</title>
+						<circle data-name="ellipse" cx="8" cy="8" r="8" />
 					</svg>
 				</span>
 			</label>
@@ -38,6 +39,8 @@ export default function RadioButton({ value, label, register }: OptionProps) {
 				className="mt-px text-gray-200 cursor-pointer select-none"
 				htmlFor={`radioButton-${value}`}
 				onClick={handleLabelClick}
+				onKeyUp={handleLabelClick}
+				onKeyDown={handleLabelClick}
 			>
 				{label}
 			</label>
