@@ -1,6 +1,6 @@
 export default function Table({ title, columns, rows }: Table) {
 	return (
-		<div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+		<div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
 			<h4 className="text-3xl font-semibold text-center m-2 mt-0">
 				{title}
 			</h4>
