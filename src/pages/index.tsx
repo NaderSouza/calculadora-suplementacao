@@ -185,6 +185,7 @@ export default function Home() {
           icon="success"
           title="Tabela de suplementação"
           buttonText="OK"
+          layout="large"
           onClose={setOpenSuplementsModal}
         >
           {contentModalCalc}

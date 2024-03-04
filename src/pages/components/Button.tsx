@@ -1,9 +1,9 @@
-import { ComponentProps } from "react";
 import { CheckCircle } from "lucide-react";
-import { tv, VariantProps } from "tailwind-variants";
+import { ComponentProps } from "react";
+import { VariantProps, tv } from "tailwind-variants";
 
 const button = tv({
-  base: `text-sm rounded font-medium text-zinc-900 bg-emerald-500 hover:bg-emerald-600`,
+  base: "rounded  text-sm font-medium text-zinc-900 bg-emerald-500 hover:bg-emerald-600",
   variants: {
     layout: {
       default: "h-9 px-4",
@@ -36,7 +36,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   return (
-    <button className={button({ layout, success, className })} {...props}>
+    <button type="button" className={button({ layout, success, className })} {...props}>
       {props.children}
       {success && <CheckCircle className="w-4 h-4 inline ml-1" />}
     </button>
