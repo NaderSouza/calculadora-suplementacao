@@ -1,7 +1,14 @@
-import { useState } from "react";
 import Button from "./Button";
-
 import { icons } from "./Icons";
+
+type ModalProps = {
+  title: string;
+  children: React.ReactNode;
+  buttonText: string;
+  icon: "warning" | "success";
+  onClose?: (value?: boolean) => any;
+  layout?: "default" | "large" | "small";
+};
 
 export default function Modal({
   title,
@@ -9,11 +16,21 @@ export default function Modal({
   buttonText,
   icon,
   onClose,
+  layout = "default",
 }: ModalProps) {
+  const modalLayoutClasses = {
+    default: "relative w-auto my-6 mx-auto max-w-3xl",
+    large: "relative my-6 mx-auto w-full max-w-6xl",
+    small: "relative w-auto my-6 mx-auto max-w-m",
+  };
+
+  const modalLayoutClass =
+    modalLayoutClasses[layout] || modalLayoutClasses.default;
+
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div className="relative my-6 mx-auto w-full max-w-6xl">
+        <div className={`${modalLayoutClass}`}>
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-slate-800 outline-none focus:outline-none">
             <div className=" items-start justify-between p-3 border-b border-solid border-slate-500 rounded-t">
               <h3 className="text-3xl font-semibold text-center">
@@ -25,7 +42,10 @@ export default function Modal({
               {children}
             </div>
             <div className="flex items-center justify-end p-6 border-t border-solid border-slate-500 rounded-b">
-              <Button layout="alert" onClick={() => onClose(false)}>
+              <Button
+                layout="approved"
+                onClick={() => onClose && onClose(false)}
+              >
                 {buttonText}
               </Button>
             </div>
