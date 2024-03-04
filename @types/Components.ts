@@ -21,12 +21,19 @@ type BodyData = {
 };
 
 type Table = {
+	title: string;
 	columns: string[];
 	rows: string[][];
 };
 
-type Scoops = {
-	protein: number;
+type SuplementsGram = {
+	creatineSaturationGram: number;
+	creatineMaintenanceGram: number;
+	betaAlanineGram: number;
+};
+
+type SuplementScoops = {
+	brandName: string;
 	creatineSaturation: number;
 	creatineMaintenance: number;
 	betaAlanine: number;
@@ -41,5 +48,5 @@ type Dosages = {
 
 type ResultSuplements = {
 	dosages: Dosages;
-	scoops: Scoops;
+	suplementScoops: SuplementScoops;
 };

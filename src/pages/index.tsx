@@ -20,33 +20,34 @@ export default function Home() {
 	const [openSuplementsModal, setOpenSuplementsModal] = useState(false);
 
 	const submitCalculateDosages = (bodyData: BodyData) => {
-		const { dosages, scoops } = calculateDosages(bodyData);
+		const { dosages, suplementScoops } = calculateDosages(bodyData);
 		setContentModalCalc(
 			<Table
+        title={suplementScoops.brandName}
 				columns={["Suplemento", "Quantidade (g)", "Scoops", "Observação"]}
 				rows={[
 					[
 						"Proteína",
 						`${dosages.protein}g`,
-						`${scoops.protein} scoops`,
+						"",
 						"É recomendado consumir fontes naturais de proteína em sua dieta. Use o suplemento apenas para complementar o que está faltando.",
 					],
 					[
 						"Dose de saturação de creatina (5 a 7 dias)",
 						`${dosages.creatineSaturation}g`,
-						`${scoops.creatineSaturation} scoops`,
+						`${suplementScoops.creatineSaturation} scoops`,
 						"É recomendado o uso fracionado do suplemento durante o dia.",
 					],
 					[
 						"Dose de manutenção de creatina",
 						`${dosages.creatineMaintenance}g`,
-						`${scoops.creatineMaintenance} scoops`,
+						`${suplementScoops.creatineMaintenance} scoops`,
 						"É recomendado o uso fracionado do suplemento durante o dia.",
 					],
 					[
 						"Dose de beta-alanina",
 						`${dosages.betaAlanine}g`,
-						`${scoops.betaAlanine} scoops`,
+						`${suplementScoops.betaAlanine} scoops`,
 						"É recomendado o uso fracionado do suplemento durante o dia.",
 					],
 				]}

@@ -12,12 +12,12 @@ const calcSuplements = {
 	},
 	creatine: (weight: number) => {
 		return [
-			parseFloat((0.3 * weight).toFixed(1)),
-			parseFloat((0.1 * weight).toFixed(1)),
+			parseFloat((0.21 * weight).toFixed(1)),
+			parseFloat((0.07 * weight).toFixed(1)),
 		];
 	},
 	betaAlanine: (weight: number) => {
-		return parseFloat((0.1 * weight).toFixed(1));
+		return parseFloat((0.07 * weight).toFixed(1));
 	},
 };
 
@@ -32,58 +32,52 @@ const calcScoops = (
 };
 
 const calcByBrand = {
-	growth: (
-		proteinGram: number,
-		creatineSaturationGram: number,
-		creatineMaintenanceGram: number,
-		betaAlanineGram: number,
-	): Scoops => {
+	growth: ({
+		creatineSaturationGram,
+		creatineMaintenanceGram,
+		betaAlanineGram,
+	}: SuplementsGram): SuplementScoops => {
 		const brandName = "Growth Supplements";
-		const proteinScoops = calcScoops(30, 2.5, proteinGram);
 		const creatineSaturationScoops = calcScoops(3, 2, creatineSaturationGram);
 		const creatineMaintenanceScoops = calcScoops(3, 2, creatineMaintenanceGram);
 		const betaAlanineScoops = calcScoops(2, 1.5, betaAlanineGram);
 
 		return {
-			protein: proteinScoops,
+			brandName,
 			creatineSaturation: creatineSaturationScoops,
 			creatineMaintenance: creatineMaintenanceScoops,
 			betaAlanine: betaAlanineScoops,
 		};
 	},
-	maxTitanium: (
-		proteinGram: number,
-		creatineSaturationGram: number,
-		creatineMaintenanceGram: number,
-		betaAlanineGram: number,
-	): Scoops => {
+	maxTitanium: ({
+		creatineSaturationGram,
+		creatineMaintenanceGram,
+		betaAlanineGram,
+	}: SuplementsGram): SuplementScoops => {
 		const brandName = "Max Titanium";
-		const proteinScoops = calcScoops(21, 3, proteinGram);
 		const creatineSaturationScoops = calcScoops(3, 2, creatineSaturationGram);
 		const creatineMaintenanceScoops = calcScoops(3, 2, creatineMaintenanceGram);
 		const betaAlanineScoops = calcScoops(2, 1, betaAlanineGram);
 
 		return {
-			protein: proteinScoops,
+			brandName,
 			creatineSaturation: creatineSaturationScoops,
 			creatineMaintenance: creatineMaintenanceScoops,
 			betaAlanine: betaAlanineScoops,
 		};
 	},
-	integralMedica: (
-		proteinGram: number,
-		creatineSaturationGram: number,
-		creatineMaintenanceGram: number,
-		betaAlanineGram: number,
-	): Scoops => {
+	integralMedica: ({
+		creatineSaturationGram,
+		creatineMaintenanceGram,
+		betaAlanineGram,
+	}: SuplementsGram): SuplementScoops => {
 		const brandName = "Integral Médica";
-		const proteinScoops = calcScoops(21, 2, proteinGram);
 		const creatineSaturationScoops = calcScoops(3, 1, creatineSaturationGram);
 		const creatineMaintenanceScoops = calcScoops(3, 1, creatineMaintenanceGram);
 		const betaAlanineScoops = calcScoops(2, 1, betaAlanineGram);
 
 		return {
-			protein: proteinScoops,
+			brandName,
 			creatineSaturation: creatineSaturationScoops,
 			creatineMaintenance: creatineMaintenanceScoops,
 			betaAlanine: betaAlanineScoops,
@@ -96,27 +90,26 @@ export const calculateDosages = ({
 	bodyFatPercentage,
 	brand,
 }: BodyData): ResultSuplements => {
-	const proteinDose = calcSuplements.protein(weight, bodyFatPercentage);
+	const proteinGram = calcSuplements.protein(weight, bodyFatPercentage);
 
-	const [creatineSaturationDose, creatineMaintenanceDose] =
+	const [creatineSaturationGram, creatineMaintenanceGram] =
 		calcSuplements.creatine(weight);
 
-	const betaAlanineDose = calcSuplements.betaAlanine(weight);
+	const betaAlanineGram = calcSuplements.betaAlanine(weight);
 
-	const scoopsByBrand = calcByBrand[brand](
-		proteinDose,
-		creatineSaturationDose,
-		creatineMaintenanceDose,
-		betaAlanineDose,
-	);
+	const suplementScoops = calcByBrand[brand]({
+		creatineSaturationGram,
+		creatineMaintenanceGram,
+		betaAlanineGram,
+	});
 
 	return {
 		dosages: {
-			protein: proteinDose,
-			creatineMaintenance: creatineMaintenanceDose,
-			creatineSaturation: creatineSaturationDose,
-			betaAlanine: betaAlanineDose,
+			protein: proteinGram,
+			creatineMaintenance: creatineMaintenanceGram,
+			creatineSaturation: creatineSaturationGram,
+			betaAlanine: betaAlanineGram,
 		},
-		scoops: scoopsByBrand,
+		suplementScoops: suplementScoops,
 	};
 };
