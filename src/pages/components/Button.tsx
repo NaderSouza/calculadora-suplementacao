@@ -3,14 +3,16 @@ import { CheckCircle } from "lucide-react";
 import { tv, VariantProps } from "tailwind-variants";
 
 const button = tv({
-  base: `rounded  text-sm font-medium text-zinc-900 bg-emerald-500 hover:bg-emerald-600`,
+  base: `text-sm rounded font-medium text-zinc-900 bg-emerald-500 hover:bg-emerald-600`,
   variants: {
     layout: {
       default: "h-9 px-4",
       sm: "h-8 px-3",
       xs: "h-6 px-2 text-xs",
       alert:
-        "px-4 h-9 text-sm rounded text-sm font-medium text-zinc-900 bg-yellow-500 hover:bg-yellow-600",
+        "px-4 h-9 text-sm rounded font-medium text-zinc-900 bg-yellow-500 hover:bg-yellow-600",
+      approved:
+        "h-9 px-4 text-sm rounded font-medium text-zinc-900 bg-emerald-500 hover:bg-emerald-600",
     },
     success: {
       true: "bg-emerald-500 hover:bg-emerald-600",

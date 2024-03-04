@@ -1,4 +1,3 @@
-import { AlertTriangle, CheckCircle } from "lucide-react";
 import { Noto_Sans_Lao } from "next/font/google";
 import Image from "next/image";
 import { useState } from "react";
@@ -156,7 +155,7 @@ export default function Home() {
             </div>
             <div className="flex h-full justify-center items-center rounded-md px-4 py-1.5">
               <Button
-                layout="sm"
+                layout="approved"
                 type="submit"
                 success
                 onClick={() => setOpenSuplementsModal(true)}
@@ -169,6 +168,7 @@ export default function Home() {
       </section>
       {openWarningModal && (
         <Modal
+          size="default"
           icon="warning"
           title="AVISO!!!"
           buttonText="OK"
