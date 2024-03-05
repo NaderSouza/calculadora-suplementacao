@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import Button from "./Button";
-import Icons from "./Icons";
+import Icon from "./Icons";
 
 type ModalProps = {
   title: string;
@@ -34,7 +34,7 @@ export default function Modal({
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-slate-800 outline-none focus:outline-none">
             <div className=" items-start justify-between p-3 border-b border-solid border-slate-500 rounded-t">
               <h3 className="text-3xl font-semibold text-center">
-                {Icons[icon]}
+                {<Icon type={icon} />}
                 {title}
               </h3>
             </div>
