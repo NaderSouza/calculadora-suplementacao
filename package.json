@@ -10,7 +10,6 @@
     "openmobile": "node ./node_modules/openmobile/ip.js",
     "lint": "npx @biomejs/biome format ./src --write",
     "lint:check": "npx @biomejs/biome check ./src",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d .next"
   },
   "dependencies": {
@@ -19,7 +18,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "lucide-react": "^0.340.0",
-    "next": "14.1.0",
+    "next": "14.1.2",
     "react": "^18",
     "react-hook-form": "^7.51.0",
     "react-input-mask": "^2.0.4",
