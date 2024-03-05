@@ -37,7 +37,7 @@ export default function Button({
 }: ButtonProps) {
 	return (
 		<button
-			type="button"
+			type="submit"
 			className={button({ layout, success, className })}
 			{...props}
 		>

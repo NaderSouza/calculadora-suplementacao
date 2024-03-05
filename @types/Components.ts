@@ -15,9 +15,9 @@ type ModalProps = {
 type Brand = "growth" | "maxTitanium" | "integralMedica";
 
 type BodyData = {
-	weight: number;
-	bodyFatPercentage: number;
-	brand: Brand;
+	weight: string;
+	bodyFatPercentage: string;
+	brand?: Brand;
 };
 
 type Table = {
