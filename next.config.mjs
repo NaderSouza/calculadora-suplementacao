@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	reactStrictMode: true,
-	images: {
-		domains: ["tailwindui.com"],
-	},
+  reactStrictMode: true,
+  basePath: "/suplement-calculator",
+  images: {
+    domains: ["tailwindui.com"],
+  },
 };
 
 export default nextConfig;
