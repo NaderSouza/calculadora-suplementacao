@@ -1,7 +1,10 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Noto_Sans_Lao } from "next/font/google";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import InputMask from "react-input-mask";
+import z from "zod";
 
 import Button from "./components/Button";
 import Modal from "./components/Modal";
@@ -13,8 +16,45 @@ import Table from "./components/Table";
 
 const noto = Noto_Sans_Lao({ subsets: ["latin"] });
 
+const brands = ["growth", "maxTitanium", "integralMedica"] as any;
+
+const calcSuplementsFormSchema = z.object({
+	weight: z
+		.string({
+			errorMap: (issue, _ctx): { message: string } => ({
+				message: "Preencha seu peso.",
+			}),
+		}).min(1)
+		.transform((weight) => {
+			return weight.trim().replace(/_/g, "");
+		}),
+	bodyFatPercentage: z
+		.string({
+			errorMap: (issue, _ctx): { message: string } => ({
+				message: "Preencha sua porcentagem de gordura corporal.",
+			}),
+		}).min(1)
+		.transform((bodyFatPercentage) => {
+			return bodyFatPercentage.trim().replace(/%_/g, "");
+		}),
+	brand: z.nativeEnum(brands, {
+		errorMap: (issue, _ctx): { message: string } => ({
+			message: "Selecione uma marca.",
+		}),
+	}),
+});
+
+type CalcSuplementsFormSchema = z.infer<typeof calcSuplementsFormSchema>;
+
 export default function Home() {
-	const { register, handleSubmit } = useForm<BodyData>();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<CalcSuplementsFormSchema>({
+		resolver: zodResolver(calcSuplementsFormSchema),
+	});
+
 	const [contentModalCalc, setContentModalCalc] = useState(<div />);
 	const [openWarningModal, setOpenWarningModal] = useState(true);
 	const [openSuplementsModal, setOpenSuplementsModal] = useState(false);
@@ -23,7 +63,7 @@ export default function Home() {
 		const { dosages, suplementScoops } = calculateDosages(bodyData);
 		setContentModalCalc(
 			<Table
-        title={suplementScoops.brandName}
+				title={suplementScoops.brandName}
 				columns={["Suplemento", "Quantidade (g)", "Scoops", "Observação"]}
 				rows={[
 					[
@@ -53,6 +93,7 @@ export default function Home() {
 				]}
 			/>,
 		);
+		setOpenSuplementsModal(true);
 	};
 
 	const brands: OptionProps[] = [
@@ -92,11 +133,12 @@ export default function Home() {
 								Peso
 							</label>
 							<div className="relative mt-1">
-								<input
-									type="number"
+								<InputMask
+									type="text"
 									id="input-size"
 									className="block w-full h-10 pl-8 pr-3 mt-1 text-sm text-gray-700 border focus:outline-none rounded shadow-sm focus:border-blue-500"
 									placeholder="Digite seu peso"
+									mask="999"
 									{...register("weight")}
 								/>
 								<span className="absolute inset-y-0 left-0 flex items-center justify-center ml-2">
@@ -109,10 +151,11 @@ export default function Home() {
 									/>
 								</span>
 							</div>
-							<p className="mt-2 text-sm text-red-600 dark:text-red-500">
-								{" "}
-								Username available!
-							</p>
+							{errors.weight && (
+								<p className="mt-2 text-sm text-red-600 dark:text-red-500">
+									{errors.weight.message}
+								</p>
+							)}
 						</div>
 						<div>
 							<label
@@ -122,11 +165,12 @@ export default function Home() {
 								Porcentagem de gordura corporal
 							</label>
 							<div className="relative mt-1">
-								<input
-									type="number"
+								<InputMask
+									type="text"
 									id="input-bodyFatPercentage"
 									className="block w-full h-10 pl-8 pr-3 mt-1 text-sm text-gray-700 border focus:outline-none rounded shadow-sm focus:border-blue-500"
 									placeholder="Digite sua % de gordura"
+									mask="99%"
 									{...register("bodyFatPercentage")}
 								/>
 								<span className="absolute inset-y-0 left-0 flex items-center justify-center ml-2">
@@ -139,10 +183,11 @@ export default function Home() {
 									/>
 								</span>
 							</div>
-							<p className="mt-2 text-sm text-red-600 dark:text-red-500">
-								{" "}
-								Username available!
-							</p>
+							{errors.bodyFatPercentage && (
+								<p className="mt-2 text-sm text-red-600 dark:text-red-500">
+									{errors.bodyFatPercentage.message}
+								</p>
+							)}
 						</div>
 						<div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-5">
 							{brands.map((brand) => (
@@ -154,13 +199,14 @@ export default function Home() {
 								/>
 							))}
 						</div>
+						{errors?.brand && (
+							<p className="mt-2 text-sm text-red-600 dark:text-red-500">
+								{typeof errors.brand.message === "string" &&
+									errors.brand?.message}
+							</p>
+						)}
 						<div className="flex h-full justify-center items-center rounded-md px-4 py-1.5">
-							<Button
-								layout="approved"
-								type="submit"
-								success
-								onClick={() => setOpenSuplementsModal(true)}
-							>
+							<Button layout="approved" success>
 								Calcular
 							</Button>
 						</div>

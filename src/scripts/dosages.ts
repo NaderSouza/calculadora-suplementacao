@@ -88,14 +88,20 @@ const calcByBrand = {
 export const calculateDosages = ({
 	weight,
 	bodyFatPercentage,
-	brand,
+	brand = "growth",
 }: BodyData): ResultSuplements => {
-	const proteinGram = calcSuplements.protein(weight, bodyFatPercentage);
+	const weightNumber = parseFloat(weight);
+	const bodyFatPercentageNumber = parseFloat(bodyFatPercentage);
+
+	const proteinGram = calcSuplements.protein(
+		weightNumber,
+		bodyFatPercentageNumber,
+	);
 
 	const [creatineSaturationGram, creatineMaintenanceGram] =
-		calcSuplements.creatine(weight);
+		calcSuplements.creatine(weightNumber);
 
-	const betaAlanineGram = calcSuplements.betaAlanine(weight);
+	const betaAlanineGram = calcSuplements.betaAlanine(weightNumber);
 
 	const suplementScoops = calcByBrand[brand]({
 		creatineSaturationGram,
