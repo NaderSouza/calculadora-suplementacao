@@ -1,0 +1,11 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/components/Button": "pages/components/Button.js",
+  "/components/Icons": "pages/components/Icons.js",
+  "/components/Modal": "pages/components/Modal.js",
+  "/components/RadioButton": "pages/components/RadioButton.js",
+  "/components/Table": "pages/components/Table.js",
+  "/": "pages/index.js"
+}
